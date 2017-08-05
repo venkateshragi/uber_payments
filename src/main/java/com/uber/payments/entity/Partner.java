@@ -1,9 +1,17 @@
 package com.uber.payments.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Created by ragiv on 25/06/17.
@@ -13,14 +21,17 @@ import javax.persistence.Table;
 public class Partner {
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     String id;
 
+    @Column(name = "NAME")
+    String name;
+
     @Column(name = "UBER_USER_ID")
     String uberUserId;
-
-    @Column(name = "LENDER_CONTRACT_ID")
-    String lenderContractId;
 
     @Column(name = "PHONE_NUMBER")
     long phoneNumber;
@@ -32,10 +43,37 @@ public class Partner {
     String address;
 
     @Column(name = "ID_TYPE")
+    @Enumerated(EnumType.STRING)
     IdType idType;
 
     @Column(name = "ID_NUMBER")
     String idNumber;
+
+    @Column(name = "DATE_CREATED")
+    Date dateCreated;
+
+    public Partner() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Partner(String id) {
+        this.id = id;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     public String getId() {
         return id;
@@ -51,14 +89,6 @@ public class Partner {
 
     public void setUberUserId(String uberUserId) {
         this.uberUserId = uberUserId;
-    }
-
-    public String getLenderContractId() {
-        return lenderContractId;
-    }
-
-    public void setLenderContractId(String lenderContractId) {
-        this.lenderContractId = lenderContractId;
     }
 
     public long getPhoneNumber() {

@@ -1,9 +1,21 @@
 package com.uber.payments.entity;
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Created by ragiv on 25/06/17.
@@ -12,8 +24,8 @@ import javax.persistence.Table;
 @Table(name = "ASSET_PURCHASED")
 public class AssetPurchased {
 
-    enum AssetType {
-        MOBILE("mobile"),
+    public enum AssetType {
+        MOBILE("Mobile"),
         TAB("Tab");
 
         String value;
@@ -24,16 +36,21 @@ public class AssetPurchased {
     }
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     String id;
 
     @Column(name = "ASSET_NAME")
     String assetName;
 
-    @Column(name = "PARTNER_ID")
-    String partnerId;
+    @ManyToOne
+    @JoinColumn(name = "PARTNER_ID", nullable = false)
+    Partner partner;
 
     @Column(name = "ASSET_TYPE")
+    @Enumerated(EnumType.STRING)
     AssetType assetType;
 
     @Column(name = "PURCHASE_AMOUNT")
@@ -46,7 +63,29 @@ public class AssetPurchased {
     int noOfEWI;
 
     @Column(name = "EWI")
-    int ewi;
+    double ewi;
+
+    @Column(name = "DATE_CREATED")
+    Date dateCreated;
+
+    @Column(name = "AMOUNT_DUE")
+    double amountDue;
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     public String getId() {
         return id;
@@ -62,14 +101,6 @@ public class AssetPurchased {
 
     public void setAssetName(String assetName) {
         this.assetName = assetName;
-    }
-
-    public String getPartnerId() {
-        return partnerId;
-    }
-
-    public void setPartnerId(String partnerId) {
-        this.partnerId = partnerId;
     }
 
     public AssetType getAssetType() {
@@ -104,11 +135,19 @@ public class AssetPurchased {
         this.noOfEWI = noOfEWI;
     }
 
-    public int getEwi() {
+    public double getEwi() {
         return ewi;
     }
 
-    public void setEwi(int ewi) {
+    public void setEwi(double ewi) {
         this.ewi = ewi;
+    }
+
+    public double getAmountDue() {
+        return amountDue;
+    }
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;
     }
 }

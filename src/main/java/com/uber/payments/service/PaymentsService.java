@@ -1,43 +1,23 @@
 package com.uber.payments.service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Iterator;
+import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.uber.payments.dto.AssetPurchasedDto;
+import com.uber.payments.dto.PartnerRegistrationDto;
+import com.uber.payments.entity.AssetPurchased;
+import com.uber.payments.entity.Partner;
+import com.uber.payments.repositories.AssetPurchasedRepository;
 
 /**
  * Created by ragiv on 25/06/17.
  */
-public class PaymentsService {
+public interface PaymentsService {
 
-    public static void main(String[] args) throws IOException {
-        String filePath = args[0];
-        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new FileInputStream(new File(filePath)));
-        int activeSheetIndex = xssfWorkbook.getActiveSheetIndex();
-        XSSFSheet sheet = xssfWorkbook.getSheetAt(activeSheetIndex);
-        Iterator<Row> rowIterator = sheet.rowIterator();
-        rowIterator.next();
-        while(rowIterator.hasNext()) {
-            Row row = rowIterator.next();
-            Iterator<Cell> cellIterator = row.cellIterator();
-            String userUUID = row.getCell(0).getStringCellValue();
-            String lenderContractID = row.getCell(1).getStringCellValue();
-            double amountToBeCharged = row.getCell(2).getNumericCellValue();
-            double amountCharged = row.getCell(3).getNumericCellValue();
-            double shortfall = row.getCell(4).getNumericCellValue();
+    Partner createPartner(PartnerRegistrationDto partner);
 
-            System.out.println(userUUID + " " + lenderContractID + " " + amountToBeCharged + " " + amountCharged + " " + shortfall);
+    AssetPurchased createAssetPurchased(AssetPurchasedDto assetPurchasedDto);
 
-            /*while(cellIterator.hasNext()) {
+    List<AssetPurchasedRepository.PartnerCollectibles> getPartnerCollectibles();
 
-            }*/
-        }
-
-
-    }
+    void recordPayments(String filePath);
 }
