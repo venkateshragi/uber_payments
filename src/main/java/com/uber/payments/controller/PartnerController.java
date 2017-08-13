@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.uber.payments.dto.AssetPurchasedDto;
 import com.uber.payments.dto.PartnerRegistrationDto;
-import com.uber.payments.entity.AssetPurchased;
 import com.uber.payments.entity.Partner;
-import com.uber.payments.repositories.AssetPurchasedRepository;
+import com.uber.payments.repositories.PartnerDebt;
 import com.uber.payments.service.PaymentsService;
 
 /**
@@ -40,11 +38,6 @@ public class PartnerController {
         return paymentsService.createPartner(partnerDto);
     }
 
-    @RequestMapping(value = "/save/assetPurchased", method = RequestMethod.POST)
-    public AssetPurchased registerPurchase(@RequestBody AssetPurchasedDto assetPurchasedDto) {
-        return paymentsService.createAssetPurchased(assetPurchasedDto);
-    }
-
     @RequestMapping(value = "/processPayments", method = RequestMethod.POST)
     public void recordPayments(@RequestParam("file") MultipartFile file) throws IOException {
         String filePath = saveUploadedFile(file);
@@ -54,7 +47,7 @@ public class PartnerController {
     @RequestMapping(value = "/downloadPartnerLedger", method = RequestMethod.GET,
             produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     public String downloadPartnerLedger(Model model) {
-        List<AssetPurchasedRepository.PartnerCollectibles> partnerCollectibles = paymentsService.getPartnerCollectibles();
+        List<PartnerDebt> partnerCollectibles = paymentsService.getPartnerCollectibles();
         model.addAttribute("collectibles", partnerCollectibles);
         return "";
     }

@@ -16,7 +16,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
-import com.uber.payments.repositories.AssetPurchasedRepository;
+import com.uber.payments.repositories.PartnerDebt;
 
 /**
  * Created by ragiv on 30/07/17.
@@ -45,24 +45,24 @@ public class ExcelView extends AbstractXlsView {
 
         // create header row
         Row header = sheet.createRow(0);
+
         header.createCell(0).setCellValue("Partner ID");
         header.getCell(0).setCellStyle(style);
-        header.createCell(1).setCellValue("Uber User ID");
-        header.getCell(1).setCellStyle(style);
-        header.createCell(2).setCellValue("Number of Assets");
-        header.getCell(2).setCellStyle(style);
-        header.createCell(3).setCellValue("Amount to be Paid");
-        header.getCell(3).setCellStyle(style);
 
-        List<AssetPurchasedRepository.PartnerCollectibles> collectibles = (List<AssetPurchasedRepository.PartnerCollectibles>) model.get("collectibles");
+        header.createCell(1).setCellValue("Uber User ID");
+        header.getCell(2).setCellStyle(style);
+
+        header.createCell(2).setCellValue("Amount to be Paid");
+        header.getCell(2).setCellStyle(style);
+
+        List<PartnerDebt> collectibles = (List<PartnerDebt>) model.get("collectibles");
 
         int rowCount = 1;
-        for(AssetPurchasedRepository.PartnerCollectibles collectible : collectibles) {
+        for(PartnerDebt collectible : collectibles) {
             Row userRow =  sheet.createRow(rowCount++);
             userRow.createCell(0).setCellValue(collectible.getPartnerId());
             userRow.createCell(1).setCellValue(collectible.getUberUserId());
-            userRow.createCell(2).setCellValue(collectible.getNumberOfAssets());
-            userRow.createCell(3).setCellValue(collectible.getAmountToBeCollected());
+            userRow.createCell(2).setCellValue(collectible.getAmountToBeCollected());
         }
 
     }

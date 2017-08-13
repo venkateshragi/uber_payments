@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -23,7 +25,6 @@ public class Partner {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     String id;
 
@@ -49,8 +50,33 @@ public class Partner {
     @Column(name = "ID_NUMBER")
     String idNumber;
 
+    @Column(name = "VEHICLE_NUMBER")
+    String vehicleNumber;
+
+    @Column(name = "ASSET_NAME")
+    String assetName;
+
+    @Column(name = "ASSET_TYPE")
+    @Enumerated(EnumType.STRING)
+    AssetType assetType;
+
+    @Column(name = "PURCHASE_AMOUNT")
+    double purchaseAmount;
+
+    @Column(name = "DOWN_PAYMENT")
+    double downPayment;
+
+    @Column(name = "NO_OF_EWI")
+    int noOfEWI;
+
+    @Column(name = "EWI")
+    double ewi;
+
     @Column(name = "DATE_CREATED")
     Date dateCreated;
+
+    @Column(name = "AMOUNT_DUE")
+    double amountDue;
 
     public Partner() {
     }
@@ -129,5 +155,69 @@ public class Partner {
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+
+    public String getAssetName() {
+        return assetName;
+    }
+
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
+    public AssetType getAssetType() {
+        return assetType;
+    }
+
+    public void setAssetType(AssetType assetType) {
+        this.assetType = assetType;
+    }
+
+    public double getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(double purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+    }
+
+    public double getDownPayment() {
+        return downPayment;
+    }
+
+    public void setDownPayment(double downPayment) {
+        this.downPayment = downPayment;
+    }
+
+    public int getNoOfEWI() {
+        return noOfEWI;
+    }
+
+    public void setNoOfEWI(int noOfEWI) {
+        this.noOfEWI = noOfEWI;
+    }
+
+    public double getEwi() {
+        return ewi;
+    }
+
+    public void setEwi(double ewi) {
+        this.ewi = ewi;
+    }
+
+    public double getAmountDue() {
+        return amountDue;
+    }
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;
     }
 }

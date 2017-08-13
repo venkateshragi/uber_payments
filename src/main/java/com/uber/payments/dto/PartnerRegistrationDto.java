@@ -6,6 +6,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.uber.payments.entity.AssetType;
 import com.uber.payments.entity.IdType;
 
 /**
@@ -36,6 +37,26 @@ public class PartnerRegistrationDto {
 
     @NotNull
     String idNumber;
+
+    @NotNull
+    String vehicleNumber;
+
+    @NotNull
+    String assetName;
+
+    @NotNull
+    AssetType assetType;
+
+    @Min(value = 1)
+    double purchaseAmount;
+
+    double downPayment;
+
+    int noOfEWI;
+
+    double ewi;
+
+    double amountDue;
 
     long dateCreated;
 
@@ -101,6 +122,70 @@ public class PartnerRegistrationDto {
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+
+    public String getAssetName() {
+        return assetName;
+    }
+
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
+    public AssetType getAssetType() {
+        return assetType;
+    }
+
+    public void setAssetType(AssetType assetType) {
+        this.assetType = assetType;
+    }
+
+    public double getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(double purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+    }
+
+    public double getDownPayment() {
+        return downPayment;
+    }
+
+    public void setDownPayment(double downPayment) {
+        this.downPayment = downPayment;
+    }
+
+    public int getNoOfEWI() {
+        return noOfEWI;
+    }
+
+    public void setNoOfEWI(int noOfEWI) {
+        this.noOfEWI = noOfEWI;
+    }
+
+    public double getEwi() {
+        return ewi;
+    }
+
+    public void setEwi(double ewi) {
+        this.ewi = ewi;
+    }
+
+    public double getAmountDue() {
+        return amountDue;
+    }
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;
     }
 
     public long getDateCreated() {

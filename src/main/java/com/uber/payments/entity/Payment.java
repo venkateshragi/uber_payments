@@ -47,9 +47,6 @@ public class Payment {
     @Column(name = "DATE_CREATED")
     Date dateCreated;
 
-    @Column(name = "NUMBER_OF_ASSETS")
-    int numberOfAssets;
-
     public String getId() {
         return id;
     }
@@ -106,11 +103,4 @@ public class Payment {
         this.amountToBeCharged = amountToBeCharged;
     }
 
-    public int getNumberOfAssets() {
-        return numberOfAssets;
-    }
-
-    public void setNumberOfAssets(int numberOfAssets) {
-        this.numberOfAssets = numberOfAssets;
-    }
 }
