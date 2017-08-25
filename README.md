@@ -1,6 +1,6 @@
 # uber_payments
 
-pplication can be run in multiple ways:
+Application can be run in multiple ways:
 ========================================
 
 1 -->

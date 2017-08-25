@@ -1,40 +1,200 @@
 <html>
-<script src="jquery-3.2.1.js"></script>
-<script src="index.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Pebal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+    <script src="js/index.js"></script>
+    <style>
+            html,body,.container {
+                height:100%;
+            }
+            .container {
+                display:table;
+                width: 100%;
+                margin-top: -50px;
+                padding: 50px 0 0 0; /*set left/right padding according to needs*/
+                box-sizing: border-box;
+            }
+
+            .search-row {
+                height: 8%;
+            }
+
+            .search-row > input {
+                border-width: 3px;
+                margin-right: 1%;
+            }
+
+            .row {
+                height: 100%;
+                display: table-row;
+            }
+
+            .row > div {
+                    border: 1px solid grey;
+            }
+
+            .row .no-float {
+              display: table-cell;
+              float: none;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            thead, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even){background-color: #f2f2f2}
+
+            thead {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .partner-info {
+                width: 30%;
+                height: 8%;
+                border-radius: 25px;
+                border: 1px solid grey;
+            }
+        </style>
+</head>
+
 <body>
-<h4>Welcome</h4>
-<table>
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" name="name" style="width:150px;height:50px"></td>
-    </tr>
-    <tr>
-        <td>Address:</td>
-        <td><textarea name="address"></textarea></td>
-    </tr>
-    <tr>
-        <td>Id Type:</td>
-        <td>
-            <select name="idType" >
-                <option value="Aadhar" selected="selected">Aadhar</option>
-                <option value="Passport">Passport</option>
-                <option value="License">License</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>Id Number:</td>
-        <td><input type="text" name="idNumber"/></td>
-    </tr>
-    <tr>
-        <td>Phone Number:</td>
-        <td><input type="text" name="phoneNumber"></td>
-    </tr>
-    <tr>
-        <td>Alternate Phone Number:</td>
-        <td><input type="text" name="alternatePhoneNumber"></td>
-    </tr>
-    <td><input type="button" value="Submit" style="height:50px;width:150px"></td>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 no-float">
+            <H3>Partner Registration</H3><br>
+            <div role="form" class="form form-horizontal col-md-offset-1" >
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Partner Name</label></div>
+                    <div class="col-md-5">
+                        <input class="field form-control" type="text" name="name" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Uber Phone Number</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="phoneNumber" placeholder="Uber Phone Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Alternate Phone</label></div>
+                    <div class="col-md-5">
+                        <input class="field form-control" type="text" name="alternatePhoneNumber" placeholder="Alternate Phone Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Address</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="address" placeholder="Address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Id Type</label></div>
+                    <div class="col-md-5">
+                        <select class="field"  name="idType">
+                            <option></option>
+                            <option value="LICENSE">LICENSE</option>
+                            <option value="PASSPORT">PASSPORT</option>
+                            <option value="AADHAR">AADHAR</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Id Number</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="idNumber" placeholder="Id Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Vehicle Number</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="vehicleNumber" placeholder="Vehicle Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Asset Name</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="assetName" placeholder="Asset Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Asset Type</label></div>
+                    <div class="col-md-5">
+                        <select class="field" name="assetType">
+                            <option></option>
+                            <option value="MOBILE">MOBILE</option>
+                            <option value="TAB">TAB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Purchase Amount</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="purchaseAmount" placeholder="Purchase Amount">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Down Payment</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="downPayment" placeholder="Down Payment">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">No Of EWI</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="noOfEWI" placeholder="No Of EWI">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">EWI</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="text" name="ewi" placeholder="EWI">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5"><label class="control-label">Date Purchased</label></div>
+                    <div class="col-md-5">
+                        <input class="field" type="date" name="datePurchased" placeholder="Date Purchased">
+                    </div>
+                </div>
+                <button id="submit_registration_form">Submit</button>
+
+
+            </div>
+        </div>
+        <div class="col-md-9 no-float">
+            <div class="search-row">
+                <input type="text" name="search_by_phone" placeholder="Phone Number" size="20">
+                <input type="text" name="search_by_name" placeholder="Name" size="20">
+                <input type="text" name="search_by_proof_id" placeholder="Proof ID" size="20">
+                <input type="text" name="search_by_uber_user_id" placeholder="Uber User Id" size="20">
+                <input type="text" name="search_by_id" placeholder="ID" size="20">
+                <button name="submit_search" value="Search">Search</button>
+            </div>
+            <div class="partner-info">
+                <label class="col-md-4 control-label">Text Input</label>
+                <span class="partner_name">Name</span>
+                <span class="Device_name">Device Name</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
 </body>
 </html>

@@ -7,10 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -72,8 +69,8 @@ public class Partner {
     @Column(name = "EWI")
     double ewi;
 
-    @Column(name = "DATE_CREATED")
-    Date dateCreated;
+    @Column(name = "DATE_PURCHASED")
+    Date datePurchased;
 
     @Column(name = "AMOUNT_DUE")
     double amountDue;
@@ -93,12 +90,12 @@ public class Partner {
         this.id = id;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    public Date getDatePurchased() {
+        return datePurchased;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDatePurchased(Date datePurchased) {
+        this.datePurchased = datePurchased;
     }
 
     public String getId() {

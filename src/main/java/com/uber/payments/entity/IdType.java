@@ -7,7 +7,8 @@ public enum IdType {
 
     LICENSE("License"),
     PASSPORT("Passport"),
-    AADHAR("Aadhar");
+    AADHAR("Aadhar"),
+    OTHER("Other");
 
 
     String value;

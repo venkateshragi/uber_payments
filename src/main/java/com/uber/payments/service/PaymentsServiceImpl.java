@@ -41,7 +41,6 @@ public class PaymentsServiceImpl implements PaymentsService {
     public Partner createPartner(PartnerRegistrationDto partnerDto) {
         Partner partner  = new Partner();
         partner.setName(partnerDto.getName());
-        partner.setUberUserId(partnerDto.getUberUserId());
         partner.setPhoneNumber(partnerDto.getPhoneNumber());
         partner.setAlternatePhoneNumber(partnerDto.getAlternatePhoneNumber());
         partner.setAddress(partnerDto.getAddress());
@@ -57,10 +56,10 @@ public class PaymentsServiceImpl implements PaymentsService {
         partner.setDownPayment(partnerDto.getDownPayment());
         partner.setAmountDue(partnerDto.getPurchaseAmount() - partnerDto.getDownPayment());
 
-        if(partnerDto.getDateCreated() == 0)
-            partner.setDateCreated(new Date());
+        if(partnerDto.getDatePurchased() == 0)
+            partner.setDatePurchased(new Date());
         else
-            partner.setDateCreated(new Date(partnerDto.getDateCreated()));
+            partner.setDatePurchased(new Date(partnerDto.getDatePurchased()));
 
         return partnerRepository.save(partner);
     }

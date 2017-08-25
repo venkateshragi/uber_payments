@@ -1,7 +1,5 @@
 package com.uber.payments.dto;
 
-import java.util.Date;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -19,7 +17,6 @@ public class PartnerRegistrationDto {
     @NotNull
     String name;
 
-    @NotNull
     String uberUserId;
 
     @Min(value = 1000000000)
@@ -58,7 +55,7 @@ public class PartnerRegistrationDto {
 
     double amountDue;
 
-    long dateCreated;
+    long datePurchased;
 
     public String getName() {
         return name;
@@ -188,11 +185,11 @@ public class PartnerRegistrationDto {
         this.amountDue = amountDue;
     }
 
-    public long getDateCreated() {
-        return dateCreated;
+    public long getDatePurchased() {
+        return datePurchased;
     }
 
-    public void setDateCreated(long dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDatePurchased(long datePurchased) {
+        this.datePurchased = datePurchased;
     }
 }

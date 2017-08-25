@@ -36,21 +36,21 @@ public class ExcelView extends AbstractXlsView {
         CellStyle style = workbook.createCellStyle();
         Font font = workbook.createFont();
         font.setFontName("Arial");
-        style.setFillForegroundColor(HSSFColor.BLUE.index);
+        style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.BLUE.getIndex());
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         font.setBold(true);
-        font.setColor(HSSFColor.WHITE.index);
+        font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
         style.setFont(font);
 
 
         // create header row
         Row header = sheet.createRow(0);
 
-        header.createCell(0).setCellValue("Partner ID");
+        header.createCell(0).setCellValue("Uber User ID");
         header.getCell(0).setCellStyle(style);
 
-        header.createCell(1).setCellValue("Uber User ID");
-        header.getCell(2).setCellStyle(style);
+        header.createCell(1).setCellValue("Lender Contract ID");
+        header.getCell(1).setCellStyle(style);
 
         header.createCell(2).setCellValue("Amount to be Paid");
         header.getCell(2).setCellStyle(style);
@@ -60,8 +60,8 @@ public class ExcelView extends AbstractXlsView {
         int rowCount = 1;
         for(PartnerDebt collectible : collectibles) {
             Row userRow =  sheet.createRow(rowCount++);
-            userRow.createCell(0).setCellValue(collectible.getPartnerId());
-            userRow.createCell(1).setCellValue(collectible.getUberUserId());
+            userRow.createCell(0).setCellValue(collectible.getUberUserId());
+            userRow.createCell(1).setCellValue(collectible.getPartnerId());
             userRow.createCell(2).setCellValue(collectible.getAmountToBeCollected());
         }
 
