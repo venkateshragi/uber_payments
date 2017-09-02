@@ -38,36 +38,8 @@ public class PaymentsServiceImpl implements PaymentsService {
     private static Logger LOG = LoggerFactory.getLogger(PaymentsServiceImpl.class);
 
     @Override
-    public Partner createPartner(PartnerRegistrationDto partnerDto) {
-        Partner partner  = new Partner();
-        partner.setName(partnerDto.getName());
-        partner.setPhoneNumber(partnerDto.getPhoneNumber());
-        partner.setAlternatePhoneNumber(partnerDto.getAlternatePhoneNumber());
-        partner.setAddress(partnerDto.getAddress());
-        partner.setIdType(partnerDto.getIdType());
-        partner.setIdNumber(partnerDto.getIdNumber());
-        partner.setVehicleNumber(partnerDto.getVehicleNumber());
-
-        partner.setAssetName(partnerDto.getAssetName());
-        partner.setAssetType(partnerDto.getAssetType());
-        partner.setPurchaseAmount(partnerDto.getPurchaseAmount());
-        partner.setNoOfEWI(partnerDto.getNoOfEWI());
-        partner.setEwi(partnerDto.getEwi());
-        partner.setDownPayment(partnerDto.getDownPayment());
-        partner.setAmountDue(partnerDto.getPurchaseAmount() - partnerDto.getDownPayment());
-
-        if(partnerDto.getDatePurchased() == 0)
-            partner.setDatePurchased(new Date());
-        else
-            partner.setDatePurchased(new Date(partnerDto.getDatePurchased()));
-
-        return partnerRepository.save(partner);
-    }
-
-    @Override
     public List<PartnerDebt> getPartnerCollectibles() {
-        List<PartnerDebt> debtPartners = partnerRepository.findByAmountDueGreaterThan(0);
-        return debtPartners;
+        return partnerRepository.findByAmountDueGreaterThan(0);
     }
 
     @Override

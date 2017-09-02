@@ -11,8 +11,6 @@ import com.uber.payments.repositories.PartnerDebt;
  */
 public interface PaymentsService {
 
-    Partner createPartner(PartnerRegistrationDto partner);
-
     List<PartnerDebt> getPartnerCollectibles();
 
     void recordPayments(String filePath);

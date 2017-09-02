@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CarBazaar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+    <script src="js/services.js"></script>
+    <script>
+    $(function(){
+      $("#includedRegistrationForm").load("registration_form.html");
+    });
+    </script>
+    <style>
+            html,body,.container {
+                height:100%;
+            }
+            .container {
+                display:table;
+                width: 100%;
+                margin-top: -50px;
+                padding: 50px 0 0 0; /*set left/right padding according to needs*/
+                box-sizing: border-box;
+            }
+
+            .row {
+                height: 100%;
+                display: table-row;
+            }
+
+            .row > div {
+                    border: 1px solid grey;
+                }
+
+            .row .no-float {
+              display: table-cell;
+              float: none;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            thead, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even){background-color: #f2f2f2}
+
+            thead {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+
+        </style>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div id="includedRegistrationForm"></div>
+        <div class="col-md-9 no-float">
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

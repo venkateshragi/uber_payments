@@ -12,6 +12,6 @@ public interface PartnerDebt {
 
     String getUberUserId();
 
-    @Value("#{ (target.amountDue <target.downPayment) ? target.amountDue : target.downPayment }")
+    @Value("#{ (target.amountDue < target.downPayment) ? target.amountDue : target.downPayment }")
     double getAmountToBeCollected();
 }

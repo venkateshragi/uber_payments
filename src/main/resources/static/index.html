@@ -21,13 +21,8 @@
                 box-sizing: border-box;
             }
 
-            .search-row {
-                height: 8%;
-            }
-
-            .search-row > input {
-                border-width: 3px;
-                margin-right: 1%;
+            .form {
+                margin-left: 4%;
             }
 
             .row {
@@ -61,11 +56,24 @@
                 color: white;
             }
 
+            .search-row {
+                height: 10%;
+            }
+
+            .search-row > input {
+                border-width: 3px;
+                margin-right: 1%;
+            }
+
             .partner-info {
-                width: 30%;
-                height: 8%;
-                border-radius: 25px;
-                border: 1px solid grey;
+                /*width: 30%;*/
+                height: 60%;
+                /*border-radius: 25px;*/
+                /*border: 1px solid grey;*/
+            }
+
+            .notifications-row {
+                height: 20%;
             }
         </style>
 </head>
@@ -73,37 +81,37 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 no-float">
+        <div class="col-md-4 no-float">
             <H3>Partner Registration</H3><br>
             <div role="form" class="form form-horizontal col-md-offset-1" >
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Partner Name</label></div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <input class="field form-control" type="text" name="name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Uber Phone Number</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="phoneNumber" placeholder="Uber Phone Number">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="phoneNumber" placeholder="Uber Phone Number">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Alternate Phone</label></div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <input class="field form-control" type="text" name="alternatePhoneNumber" placeholder="Alternate Phone Number">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Address</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="address" placeholder="Address">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="address" placeholder="Address">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Id Type</label></div>
-                    <div class="col-md-5">
-                        <select class="field"  name="idType">
+                    <div class="col-md-7">
+                        <select class="field form-control"  name="idType">
                             <option></option>
                             <option value="LICENSE">LICENSE</option>
                             <option value="PASSPORT">PASSPORT</option>
@@ -114,26 +122,26 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Id Number</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="idNumber" placeholder="Id Number">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="idNumber" placeholder="Id Number">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Vehicle Number</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="vehicleNumber" placeholder="Vehicle Number">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="vehicleNumber" placeholder="Vehicle Number">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Asset Name</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="assetName" placeholder="Asset Name">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="assetName" placeholder="Asset Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Asset Type</label></div>
-                    <div class="col-md-5">
-                        <select class="field" name="assetType">
+                    <div class="col-md-7">
+                        <select class="field form-control" name="assetType">
                             <option></option>
                             <option value="MOBILE">MOBILE</option>
                             <option value="TAB">TAB</option>
@@ -142,32 +150,32 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Purchase Amount</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="purchaseAmount" placeholder="Purchase Amount">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="purchaseAmount" placeholder="Purchase Amount">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Down Payment</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="downPayment" placeholder="Down Payment">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="downPayment" placeholder="Down Payment">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">No Of EWI</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="noOfEWI" placeholder="No Of EWI">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="noOfEWI" placeholder="No Of EWI">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">EWI</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="text" name="ewi" placeholder="EWI">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="text" name="ewi" placeholder="EWI">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5"><label class="control-label">Date Purchased</label></div>
-                    <div class="col-md-5">
-                        <input class="field" type="date" name="datePurchased" placeholder="Date Purchased">
+                    <div class="col-md-7">
+                        <input class="field form-control" type="date" name="datePurchased" placeholder="Date Purchased">
                     </div>
                 </div>
                 <button id="submit_registration_form">Submit</button>
@@ -175,7 +183,7 @@
 
             </div>
         </div>
-        <div class="col-md-9 no-float">
+        <div class="col-md-8 no-float">
             <div class="search-row">
                 <input type="text" name="search_by_phone" placeholder="Phone Number" size="20">
                 <input type="text" name="search_by_name" placeholder="Name" size="20">
@@ -185,9 +193,16 @@
                 <button name="submit_search" value="Search">Search</button>
             </div>
             <div class="partner-info">
-                <label class="col-md-4 control-label">Text Input</label>
-                <span class="partner_name">Name</span>
-                <span class="Device_name">Device Name</span>
+                <table>
+                    <thead>
+                        <tr>Partner Name</tr>
+                    </thead>
+                </table>
+                <!--<label class="col-md-4 control-label">Text Input</label>-->
+                <!--<span class="partner_name">Name</span>-->
+                <!--<span class="Device_name">Device Name</span>-->
+            </div>
+            <div class="notifications-row">
             </div>
         </div>
     </div>

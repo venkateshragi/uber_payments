@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.View;
@@ -19,6 +20,7 @@ import com.uber.payments.util.ExcelView;
 /**
  * Created by ragiv on 30/07/17.
  */
+@Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -53,8 +55,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public class ExcelViewResolver implements ViewResolver {
         @Override
         public View resolveViewName(String s, Locale locale) throws Exception {
-            ExcelView view = new ExcelView();
-            return view;
+            return new ExcelView();
         }
     }
 

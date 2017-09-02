@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.uber.payments.dto.PartnerRegistrationDto;
 import com.uber.payments.entity.Partner;
 import com.uber.payments.repositories.PartnerDebt;
+import com.uber.payments.service.PartnerService;
 import com.uber.payments.service.PaymentsService;
 
 /**
@@ -33,23 +34,18 @@ public class PartnerController {
     @Autowired
     PaymentsService paymentsService;
 
+    @Autowired
+    PartnerService partnerService;
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Partner registerPartner(@RequestBody PartnerRegistrationDto partnerDto) {
-        return paymentsService.createPartner(partnerDto);
+        return partnerService.createPartner(partnerDto);
     }
 
     @RequestMapping(value = "/processPayments", method = RequestMethod.POST)
     public void recordPayments(@RequestParam("file") MultipartFile file) throws IOException {
         String filePath = saveUploadedFile(file);
         paymentsService.recordPayments(filePath);
-    }
-
-    @RequestMapping(value = "/downloadPartnerLedger", method = RequestMethod.GET,
-            produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    public String downloadPartnerLedger(Model model) {
-        List<PartnerDebt> partnerCollectibles = paymentsService.getPartnerCollectibles();
-        model.addAttribute("collectibles", partnerCollectibles);
-        return "";
     }
 
     private String saveUploadedFile(MultipartFile file) throws IOException {

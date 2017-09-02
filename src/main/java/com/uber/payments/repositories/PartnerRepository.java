@@ -16,4 +16,6 @@ public interface PartnerRepository extends JpaRepository<Partner, String> {
 
     List<PartnerDebt> findByAmountDueGreaterThan(double value);
 
+    List<PartnerWithoutUberId> findByUberUserIdIsNull();
+
 }
