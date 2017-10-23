@@ -34,17 +34,32 @@ public class PartnerController {
     @Autowired
     PartnerService partnerService;
 
+    /**
+     * Registers a new purchase. Here a new purchase is a new registration.
+     * @param partnerDto partner details - excluding uber id.
+     * @return saved partner object
+     */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Partner registerPartner(@RequestBody PartnerRegistrationDto partnerDto) {
         return partnerService.createPartner(partnerDto);
     }
 
+    /**
+     * This is to import uber ids of the partners registered with us.
+     * @param file containing uber ids.
+     * @throws IOException
+     */
     @RequestMapping(value = "/importUberId", method = RequestMethod.POST)
     public void importUberId(@RequestParam("file") MultipartFile file) throws IOException {
         String filePath = saveUploadedFile(file);
         partnerService.updateUberIds(filePath);
     }
 
+    /**
+     * To process payments made by the partner ie., EWIs
+     * @param file
+     * @throws IOException
+     */
     @RequestMapping(value = "/processPayments", method = RequestMethod.POST)
     public void recordPayments(@RequestParam("file") MultipartFile file) throws IOException {
         String filePath = saveUploadedFile(file);

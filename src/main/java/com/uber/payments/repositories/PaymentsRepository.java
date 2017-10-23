@@ -14,6 +14,11 @@ import com.uber.payments.repositories.vo.PartnerPaymentInfo;
  */
 public interface PaymentsRepository extends CrudRepository<Payment, String> {
 
+    /**
+     * returns the latest payment information along with the number of times a partner was asked for payment.
+     * @param partnerIds
+     * @return
+     */
     @Query(nativeQuery = true,
             value = "select com.uber.payments.repositories.vo.PartnerPaymentInfo(PARTNER_ID, SHORTFALL, count(*))" +
                     " from PAYMENT group by PARTNER_ID having DATE_CREATED = max(DATE_CREATED)" +

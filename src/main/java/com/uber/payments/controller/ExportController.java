@@ -23,6 +23,11 @@ public class ExportController {
     @Autowired
     PartnerService partnerService;
 
+    /**
+     * Exports a file that contains the partners next installment along with previous dues.
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/partnerLedger", method = RequestMethod.GET,
             produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     public String downloadPartnerLedger(Model model) {
@@ -32,6 +37,11 @@ public class ExportController {
         return "";
     }
 
+    /**
+     * Exports a file containing new registrations which are not yet assigned uberUberids.
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/partnersWithoutUberId", method = RequestMethod.GET,
             produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     public String downloadPartnersWithoutUberId(Model model) {

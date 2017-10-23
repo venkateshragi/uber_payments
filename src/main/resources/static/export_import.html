@@ -40,16 +40,18 @@
     <div style="height: 10%;" class="row">
         <a class="button" href="index.html" style="text-decoration: none">Home</a>
     </div>
-    <div id="import_form" style="height: 20%;" class="row">
-        <label style="margin: 1%">Select a file to import uber ids of partners : </label>
-        <input style="display: inline; font-size: 15px;" type="file" name="fileName">
-        <button id="import_button" style="margin: 1%">Import</button>
+    <div style="height: 20%;" class="row">
+        <form id="import_form" method="POST" enctype="multipart/form-data" id="fileUploadForm">
+            <label style="margin: 1%">Select a file to import uber ids of partners : </label>
+            <input style="display: inline; font-size: 15px;" type="file" name="fileName">
+            <input type="submit" id="import_button" style="margin: 1%">
+        </form>
     </div>
     <div id="export" style="height: 60%" class="row">
         <a class="button" href="download/partnerLedger" style="text-decoration: none">Download Collectibles</a>
         <a class="button" href="download/partnersWithoutUberId" style="text-decoration: none">Download Partners Without Uber ID</a>
-        <button id="download_collectibles" style="margin: 1%">Download Collectibles</button>
-        <button id="download_partners_without_uber_id" style="margin: 1%">Download Partners Without Uber ID</button>
+        <!--<button id="download_collectibles" style="margin: 1%">Download Collectibles</button>
+        <button id="download_partners_without_uber_id" style="margin: 1%">Download Partners Without Uber ID</button>-->
     </div>
 </div>
 </body>

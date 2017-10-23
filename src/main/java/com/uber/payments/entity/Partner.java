@@ -20,8 +20,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class Partner {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GenericGenerator(name = "id_generator", strategy = "com.uber.payments.entity.generator.PartnerIdGenerator")
+    @GeneratedValue(generator = "id_generator")
     @Column(name = "ID")
     String id;
 

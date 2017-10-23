@@ -9,7 +9,15 @@ import com.uber.payments.repositories.vo.PartnerDebt;
  */
 public interface PaymentsService {
 
+    /**
+     * Returns a list of collectibles from partner.
+     * @return a list of partnerDebt describing the collectibles from partners.
+     */
     List<PartnerDebt> getPartnerCollectibles();
 
+    /**
+     * Records payments of the partners.
+     * @param filePath Path to the location of file containing payments.
+     */
     void recordPayments(String filePath);
 }

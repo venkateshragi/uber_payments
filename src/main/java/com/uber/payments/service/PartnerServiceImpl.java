@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -21,6 +23,7 @@ import com.uber.payments.repositories.PartnerRepository;
 import com.uber.payments.repositories.vo.PartnerWithoutUberId;
 
 @Service
+@Transactional
 public class PartnerServiceImpl implements PartnerService {
 
     @Autowired
@@ -43,7 +46,8 @@ public class PartnerServiceImpl implements PartnerService {
         partner.setAssetType(partnerDto.getAssetType());
         partner.setPurchaseAmount(partnerDto.getPurchaseAmount());
         partner.setNoOfEWI(partnerDto.getNoOfEWI());
-        partner.setEwi(partnerDto.getEwi());
+        double remainingAmount = partnerDto.getPurchaseAmount() - partnerDto.getDownPayment();
+        partner.setEwi(remainingAmount / partnerDto.getNoOfEWI());
         partner.setDownPayment(partnerDto.getDownPayment());
         partner.setAmountDue(partnerDto.getPurchaseAmount() - partnerDto.getDownPayment());
 

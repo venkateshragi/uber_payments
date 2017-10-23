@@ -51,7 +51,7 @@ public class PartnerRegistrationDto {
 
     int noOfEWI;
 
-    double ewi;
+//    double ewi;
 
     double amountDue;
 
@@ -169,13 +169,13 @@ public class PartnerRegistrationDto {
         this.noOfEWI = noOfEWI;
     }
 
-    public double getEwi() {
+    /*public double getEwi() {
         return ewi;
     }
 
     public void setEwi(double ewi) {
         this.ewi = ewi;
-    }
+    }*/
 
     public double getAmountDue() {
         return amountDue;

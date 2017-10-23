@@ -10,6 +10,7 @@ var submitPartnerRegistration = function () {
         data    : JSON.stringify(partnerDetails),
         contentType: "application/json",
         success : function(response) {
+            alert("Record saved successfully. Partner ID:" + response.id);
             $(".form .field").each(function(index, element) {
                 var defaultValue = $(element).defaultValue;
                 $(element).val(defaultValue);
@@ -30,7 +31,9 @@ var importUberId = function(event) {
 
     event.preventDefault();
     var form = $('#import_form')[0];
-    var data = new FormData(form);
+    var files = form.children[1].files;
+    var data = new FormData();
+    data.append("file", files[0]);
     $("#import_button").prop("disabled", true);
 
     $.ajax({
