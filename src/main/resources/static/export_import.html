@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pebal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+    <script src="js/index.js"></script>
+
+    <style>
+        .container {
+            display:table;
+            width: 100%;
+            margin-top: -50px;
+            padding: 50px 0 0 0; /*set left/right padding according to needs*/
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin: 1%;
+        }
+
+        .button {
+            display: inline;
+            width: 115px;
+            background: #d9ddde;
+            padding: 10px;
+            text-align: center;
+            border-radius: 3px;
+            color: Black;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div style="height: 10%;" class="row">
+        <a class="button" href="index.html" style="text-decoration: none">Home</a>
+    </div>
+    <div id="import_form" style="height: 20%;" class="row">
+        <label style="margin: 1%">Select a file to import uber ids of partners : </label>
+        <input style="display: inline; font-size: 15px;" type="file" name="fileName">
+        <button id="import_button" style="margin: 1%">Import</button>
+    </div>
+    <div id="export" style="height: 60%" class="row">
+        <a class="button" href="download/partnerLedger" style="text-decoration: none">Download Collectibles</a>
+        <a class="button" href="download/partnersWithoutUberId" style="text-decoration: none">Download Partners Without Uber ID</a>
+        <button id="download_collectibles" style="margin: 1%">Download Collectibles</button>
+        <button id="download_partners_without_uber_id" style="margin: 1%">Download Partners Without Uber ID</button>
+    </div>
+</div>
+</body>

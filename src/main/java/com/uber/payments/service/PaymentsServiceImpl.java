@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,12 +18,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uber.payments.dto.PartnerRegistrationDto;
 import com.uber.payments.entity.Partner;
 import com.uber.payments.entity.Payment;
-import com.uber.payments.repositories.PartnerDebt;
 import com.uber.payments.repositories.PartnerRepository;
 import com.uber.payments.repositories.PaymentsRepository;
+import com.uber.payments.repositories.vo.PartnerDebt;
+import com.uber.payments.repositories.vo.PartnerPaymentInfo;
 
 /**
  * Created by ragiv on 16/07/17.
@@ -39,7 +41,29 @@ public class PaymentsServiceImpl implements PaymentsService {
 
     @Override
     public List<PartnerDebt> getPartnerCollectibles() {
-        return partnerRepository.findByAmountDueGreaterThan(0);
+
+        List<PartnerDebt> partnerDebts = partnerRepository.findByAmountDueGreaterThan(0);
+        List<String> partnerIds = partnerDebts.parallelStream().map(PartnerDebt::getPartnerId).collect(Collectors.toList());
+
+        List<PartnerPaymentInfo> previousShortfalls = paymentsRepository.findPreviousShortfall(partnerIds);
+        Map<String, PartnerPaymentInfo> partnerPaymentInfoMap = previousShortfalls.parallelStream()
+                .collect(Collectors.toMap(PartnerPaymentInfo::getPartnerId, Function.identity()));
+
+        for(PartnerDebt partnerDebt : partnerDebts) {
+            PartnerPaymentInfo partnerPaymentInfo = partnerPaymentInfoMap.get(partnerDebt.getPartnerId());
+            if(partnerPaymentInfo == null) {
+                //We are generating the collectibles first time for this partner. Sending for first EWI
+                continue;
+            }
+            if(partnerPaymentInfo.getTotalPayments() < partnerDebt.noOfEWI) {
+                partnerDebt.amountToBeCollected = partnerDebt.amountToBeCollected + partnerPaymentInfo.getShortfall();
+            } else {
+                partnerDebt.isNPA = true;
+                partnerDebt.amountToBeCollected = partnerPaymentInfo.getShortfall();
+            }
+        }
+
+        return partnerDebts;
     }
 
     @Override

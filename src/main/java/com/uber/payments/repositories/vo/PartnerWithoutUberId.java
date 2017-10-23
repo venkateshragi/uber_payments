@@ -1,4 +1,4 @@
-package com.uber.payments.repositories;
+package com.uber.payments.repositories.vo;
 
 import org.springframework.beans.factory.annotation.Value;
 

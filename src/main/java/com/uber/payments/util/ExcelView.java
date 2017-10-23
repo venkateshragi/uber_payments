@@ -17,8 +17,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
-import com.uber.payments.repositories.PartnerDebt;
-import com.uber.payments.repositories.PartnerWithoutUberId;
+import com.uber.payments.repositories.vo.PartnerDebt;
+import com.uber.payments.repositories.vo.PartnerWithoutUberId;
 
 /**
  * Created by ragiv on 30/07/17.
@@ -31,6 +31,8 @@ public class ExcelView extends AbstractXlsxView {
     protected void buildExcelDocument(Map<String, Object> model, Workbook workbook,
                                       HttpServletRequest request, HttpServletResponse response) throws Exception {
         String document = (String) model.get("document");
+        if(document == null)
+            return;
         switch (document) {
             case "partners_without_uber_id" :
                 buildPartnersToFetchUberUserId(model, workbook, request, response);
@@ -43,7 +45,7 @@ public class ExcelView extends AbstractXlsxView {
 
     private void buildPartnersToFetchUberUserId(Map<String, Object> model, Workbook workbook,
                                                 HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Content-Disposition", "attachment; filename=\"partners_without_uber_id" + dateFormatter.format(new Date()) + ".xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=\"partners_without_uber_id_" + dateFormatter.format(new Date()) + ".xlsx");
         String[] columns = {"Name", "Mobile Numbers", "Vehicle Numbers", "Partner Id"};
         Sheet sheet = createSheetAndHeaderRow(workbook, "Partners", columns);
         int rowCount = 1;
@@ -60,7 +62,7 @@ public class ExcelView extends AbstractXlsxView {
 
     private void buildCollectiblesDocumentg(Map<String, Object> model, Workbook workbook,
                                             HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Content-Disposition", "attachment; filename=\"collectibles" + dateFormatter.format(new Date()) + ".xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=\"collectibles_" + dateFormatter.format(new Date()) + ".xlsx");
         String[] columns = {"Uber User ID", "Lender Contract ID", "Amount to be Paid"};
         Sheet sheet = createSheetAndHeaderRow(workbook, "Collectibles", columns);
         int rowCount = 1;
