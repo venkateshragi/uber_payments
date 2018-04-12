@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +42,7 @@ public class PartnerController {
      * @return saved partner object
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Partner registerPartner(@RequestBody PartnerRegistrationDto partnerDto) {
+    public Partner registerPartner(@Valid @RequestBody PartnerRegistrationDto partnerDto) {
         return partnerService.createPartner(partnerDto);
     }
 

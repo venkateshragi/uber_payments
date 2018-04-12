@@ -17,11 +17,11 @@ public class PartnerDebt {
 
     public boolean isNPA;
 
-    public PartnerDebt(String id, String uberUserId, int noOfEWI, double amountDue, double downPayment) {
+    public PartnerDebt(String id, String uberUserId, int noOfEWI, double amountDue, double ewi) {
         this.partnerId = id;
         this.uberUserId = uberUserId;
         this.noOfEWI = noOfEWI;
-        this.amountToBeCollected = amountDue < downPayment ? amountDue : downPayment;
+        this.amountToBeCollected = amountDue < ewi ? amountDue : ewi;
     }
 
 //    @Value("#{target.id}")

@@ -3,6 +3,48 @@ var submitPartnerRegistration = function () {
     $(".form .field").each(function(index, element) {
         partnerDetails[element.name] = element.value;
     });
+
+    if(!partnerDetails["name"]) {
+        alert("name cannot be empty");
+        return;
+    }
+    if(!partnerDetails["phoneNumber"]) {
+        alert("phoneNumber cannot be empty");
+        return;
+    }
+    if(!partnerDetails["idType"]) {
+        alert("TdType cannot be empty");
+        return;
+    }
+    if(!partnerDetails["idNumber"]) {
+        alert("IdNumber cannot be empty");
+        return;
+    }
+    if(!partnerDetails["vehicleNumber"]) {
+        alert("VehicleNumber cannot be empty");
+        return;
+    }
+    if(!partnerDetails["assetName"]) {
+        alert("assetName cannot be empty");
+        return;
+    }
+    if(!partnerDetails["assetType"]) {
+        alert("assetType cannot be empty");
+        return;
+    }
+    if(!partnerDetails["purchaseAmount"]) {
+        alert("purchaseAmount cannot be empty");
+        return;
+    }
+    if(!partnerDetails["downPayment"]) {
+        alert("downPayment cannot be empty");
+        return;
+    }
+    if(!partnerDetails["noOfEWI"]) {
+        alert("NoOfEWI cannot be empty");
+        return;
+    }
+
     partnerDetails["datePurchased"] = new Date(partnerDetails["datePurchased"]).getTime();
     $.ajax({
         url     : "http://localhost:8080/partner/save",
@@ -16,8 +58,8 @@ var submitPartnerRegistration = function () {
                 $(element).val(defaultValue);
             })
         },
-        error : function() {
-            alert("Partner Registration Failed. Please Try Again");
+        error : function(response) {
+            alert("Partner Registration Failed. Please Try Again" + response.errors ? response.errors : response.message);
         }
     });
 

@@ -25,7 +25,7 @@ public class PartnerIdGenerator implements IdentifierGenerator {
         GregorianCalendar calendar = new GregorianCalendar();
         String month = calendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()).toUpperCase();
         String date = String.format("%02d", calendar.get(Calendar.DATE));
-        String prefix = "PP" + month + date;
+        String prefix = "PBL" + month + date;
         Connection connection = session.connection();
 
         try {

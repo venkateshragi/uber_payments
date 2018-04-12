@@ -20,8 +20,8 @@ public interface PaymentsRepository extends CrudRepository<Payment, String> {
      * @return
      */
     @Query(nativeQuery = true,
-            value = "select com.uber.payments.repositories.vo.PartnerPaymentInfo(PARTNER_ID, SHORTFALL, count(*))" +
-                    " from PAYMENT group by PARTNER_ID having DATE_CREATED = max(DATE_CREATED)" +
-                    " where PARTNER_ID in :partnerIds")
+            value = "select p.PARTNER_ID, p.SHORTFALL, count(*) as totalPayments" +
+                    " from PAYMENT p where p.PARTNER_ID in :partnerIds " +
+                    " group by p.PARTNER_ID having p.DATE_CREATED = max(p.DATE_CREATED)")
     List<PartnerPaymentInfo> findPreviousShortfall(@Param("partnerIds") List<String> partnerIds);
 }

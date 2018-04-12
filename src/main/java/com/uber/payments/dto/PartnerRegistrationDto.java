@@ -23,10 +23,8 @@ public class PartnerRegistrationDto {
     @Max(value = 9999999999L)
     long phoneNumber;
 
-    @Max(value = 9999999999L)
     long alternatePhoneNumber;
 
-    @NotNull
     String address;
 
     @NotNull
@@ -47,9 +45,11 @@ public class PartnerRegistrationDto {
     @Min(value = 1)
     double purchaseAmount;
 
-    double downPayment;
+    @NotNull
+    Double downPayment;
 
-    int noOfEWI;
+    @NotNull
+    Integer noOfEWI;
 
 //    double ewi;
 
